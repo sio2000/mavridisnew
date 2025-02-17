@@ -7,7 +7,7 @@
   "description": "MAVRIDIS - Constructions & Architectural Services",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/mavridis-constructions"
+    "url": "https://github.com/pecawog325/mavridis-constructions"
   },
   "scripts": {
     "dev": "vite",
