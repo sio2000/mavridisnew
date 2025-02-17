@@ -1,0 +1,21 @@
+{
+  "home": {
+    "hero": {
+      // ... existing translations ...
+    },
+    "services": {
+      "architectural": {
+        "title": "Architectural Services",
+        "description": "Design and implementation of architectural projects with innovative solutions"
+      },
+      "engineering": {
+        "title": "Engineering Services",
+        "description": "Comprehensive engineering services and technical studies"
+      },
+      "blog": {
+        "title": "Our Blog",
+        "description": "Our Blog"
+      }
+    }
+  }
+} 
