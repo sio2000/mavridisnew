@@ -146,16 +146,24 @@ const Blog = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
+    // SEO Optimization
     document.title = language === 'el' 
-      ? 'Blog | MAVRIDIS - Κατασκευές & Αρχιτεκτονικές Υπηρεσίες'
-      : 'Blog | MAVRIDIS - Constructions & Architectural Services';
+      ? 'Blog Κατασκευών & Αρχιτεκτονικής | MAVRIDIS - Νέα & Άρθρα από την Κομοτηνή'
+      : 'Construction & Architecture Blog | MAVRIDIS - News & Articles from Komotini';
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', language === 'el'
-        ? 'Διαβάστε τα τελευταία νέα και άρθρα για κατασκευές, αρχιτεκτονική, ανακαινίσεις και τάσεις στον κλάδο από το γραφείο MAVRIDIS στην Κομοτηνή.'
-        : 'Read the latest news and articles about construction, architecture, renovations and industry trends from MAVRIDIS office in Komotini, Greece.'
+        ? 'Διαβάστε τα τελευταία νέα και άρθρα για κατασκευές, αρχιτεκτονική και ανακαινίσεις. Συμβουλές, τάσεις και έργα από το γραφείο MAVRIDIS στην Κομοτηνή. Ενημερωθείτε για τις εξελίξεις στον κατασκευαστικό κλάδο.'
+        : 'Read the latest news and articles about construction, architecture and renovations. Tips, trends and projects from MAVRIDIS office in Komotini. Stay updated with developments in the construction industry.'
       );
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = language === 'el'
+        ? 'Διαβάστε τα τελευταία νέα και άρθρα για κατασκευές, αρχιτεκτονική και ανακαινίσεις. Συμβουλές, τάσεις και έργα από το γραφείο MAVRIDIS στην Κομοτηνή. Ενημερωθείτε για τις εξελίξεις στον κατασκευαστικό κλάδο.'
+        : 'Read the latest news and articles about construction, architecture and renovations. Tips, trends and projects from MAVRIDIS office in Komotini. Stay updated with developments in the construction industry.';
+      document.head.appendChild(meta);
     }
   }, [language]);
 

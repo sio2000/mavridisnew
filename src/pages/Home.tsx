@@ -20,21 +20,21 @@ const Home = () => {
   useEffect(() => {
     // SEO Optimization
     document.title = language === 'el' 
-      ? 'MAVRIDIS - Κατασκευές & Αρχιτεκτονικές Υπηρεσίες στην Κομοτηνή'
-      : 'MAVRIDIS - Constructions & Architectural Services in Komotini';
+      ? 'MAVRIDIS | Κατασκευές & Αρχιτεκτονικές Υπηρεσίες στην Κομοτηνή | ✓17+ Χρόνια Εμπειρίας'
+      : 'MAVRIDIS | Construction & Architectural Services in Komotini | ✓17+ Years Experience';
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', language === 'el'
-        ? 'Το γραφείο MAVRIDIS προσφέρει ολοκληρωμένες κατασκευαστικές και αρχιτεκτονικές υπηρεσίες στην Κομοτηνή. Αρχιτεκτονικές μελέτες, κατασκευές, ανακαινίσεις και επιβλέψεις έργων.'
-        : 'MAVRIDIS office offers comprehensive construction and architectural services in Komotini, Greece. Architectural studies, construction projects, renovations and project supervision.'
+        ? 'Το γραφείο MAVRIDIS στην Κομοτηνή προσφέρει ολοκληρωμένες υπηρεσίες κατασκευών και αρχιτεκτονικού σχεδιασμού. ✓Μελέτες ✓Κατασκευές ✓Ανακαινίσεις ✓Επιβλέψεις ✓Άδειες. Τηλ: 2531034781'
+        : 'MAVRIDIS office in Komotini offers comprehensive construction and architectural design services. ✓Studies ✓Construction ✓Renovations ✓Supervision ✓Permits. Tel: +30 2531034781'
       );
     } else {
       const meta = document.createElement('meta');
       meta.name = 'description';
       meta.content = language === 'el'
-        ? 'Το γραφείο MAVRIDIS προσφέρει ολοκληρωμένες κατασκευαστικές και αρχιτεκτονικές υπηρεσίες στην Κομοτηνή. Αρχιτεκτονικές μελέτες, κατασκευές, ανακαινίσεις και επιβλέψεις έργων.'
-        : 'MAVRIDIS office offers comprehensive construction and architectural services in Komotini, Greece. Architectural studies, construction projects, renovations and project supervision.';
+        ? 'Το γραφείο MAVRIDIS στην Κομοτηνή προσφέρει ολοκληρωμένες υπηρεσίες κατασκευών και αρχιτεκτονικού σχεδιασμού. ✓Μελέτες ✓Κατασκευές ✓Ανακαινίσεις ✓Επιβλέψεις ✓Άδειες. Τηλ: 2531034781'
+        : 'MAVRIDIS office in Komotini offers comprehensive construction and architectural design services. ✓Studies ✓Construction ✓Renovations ✓Supervision ✓Permits. Tel: +30 2531034781';
       document.head.appendChild(meta);
     }
   }, [language]);

@@ -21,21 +21,35 @@ import backofficeImage from '../assets/images/backoffice.png';
 import photo1 from '../assets/images/photo1.png';
 import photo2 from '../assets/images/photo2.png';
 
+// Add type for service and item
+interface ServiceItem {
+  title: string;
+  description: string;
+}
+
 const EngineeringServices = () => {
   const { t } = useTranslation();
   const { language } = useLanguage();
 
   useEffect(() => {
+    // SEO Optimization
     document.title = language === 'el' 
-      ? 'Κατασκευαστικές Υπηρεσίες | MAVRIDIS - Κατασκευές & Αρχιτεκτονικές Υπηρεσίες'
-      : 'Construction Services | MAVRIDIS - Constructions & Architectural Services';
+      ? 'Κατασκευαστικές & Τεχνικές Υπηρεσίες Κομοτηνής | MAVRIDIS | Μελέτες & Επιβλέψεις'
+      : 'Construction & Technical Services in Komotini | MAVRIDIS | Studies & Supervision';
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', language === 'el'
-        ? 'Ολοκληρωμένες κατασκευαστικές υπηρεσίες από το γραφείο MAVRIDIS. Κατασκευές κτιρίων, επιβλέψεις έργων, στατικές μελέτες και τεχνικές συμβουλές στην Κομοτηνή.'
-        : 'Comprehensive construction services by MAVRIDIS office. Building construction, project supervision, structural studies and technical consulting in Komotini, Greece.'
+        ? 'Ολοκληρωμένες κατασκευαστικές και τεχνικές υπηρεσίες στην Κομοτηνή. ✓17+ χρόνια εμπειρίας ✓Στατικές μελέτες ✓Επιβλέψεις έργων ✓Ενεργειακά πιστοποιητικά ✓Άδειες δόμησης. Τηλ: 2531034781'
+        : 'Comprehensive construction and technical services in Komotini. ✓17+ years experience ✓Structural studies ✓Project supervision ✓Energy certificates ✓Building permits. Tel: +30 2531034781'
       );
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = language === 'el'
+        ? 'Ολοκληρωμένες κατασκευαστικές και τεχνικές υπηρεσίες στην Κομοτηνή. ✓17+ χρόνια εμπειρίας ✓Στατικές μελέτες ✓Επιβλέψεις έργων ✓Ενεργειακά πιστοποιητικά ✓Άδειες δόμησης. Τηλ: 2531034781'
+        : 'Comprehensive construction and technical services in Komotini. ✓17+ years experience ✓Structural studies ✓Project supervision ✓Energy certificates ✓Building permits. Tel: +30 2531034781';
+      document.head.appendChild(meta);
     }
   }, [language]);
 
@@ -59,6 +73,53 @@ const EngineeringServices = () => {
     'Εμπειρία σε Τεχνικές Πραγματογνωμοσύνες',
     'Μέλος της Μόνιμης Επιτροπής Χωροταξίας και Περιβάλλοντος του ΤΕΕ Θράκης'
   ];
+
+  // Fix linter errors by adding types
+  const renderServiceItem = (service: string, index: number) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      whileHover={{ scale: 1.02, backgroundColor: '#F0FDF4' }}
+      className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+    >
+      <div className="p-3 bg-green-100 rounded-lg">
+        {index === 0 && <Award className="h-6 w-6 text-green-600" />}
+        {index === 1 && <Lightbulb className="h-6 w-6 text-green-600" />}
+        {index === 2 && <BadgeCheck className="h-6 w-6 text-green-600" />}
+        {index === 3 && <Building className="h-6 w-6 text-green-600" />}
+        {index === 4 && <FileText className="h-6 w-6 text-green-600" />}
+        {index === 5 && <ClipboardCheck className="h-6 w-6 text-green-600" />}
+        {index === 6 && <Users className="h-6 w-6 text-green-600" />}
+      </div>
+      <span className="text-gray-700 font-medium">{service}</span>
+    </motion.div>
+  );
+
+  const renderExperienceItem = (item: string, index: number) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      whileHover={{ scale: 1.02, backgroundColor: '#F0FDF4' }}
+      className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+    >
+      <div className="p-3 bg-green-100 rounded-lg">
+        {index === 0 && <Award className="h-6 w-6 text-green-600" />}
+        {index === 1 && <Lightbulb className="h-6 w-6 text-green-600" />}
+        {index === 2 && <BadgeCheck className="h-6 w-6 text-green-600" />}
+        {index === 3 && <Building className="h-6 w-6 text-green-600" />}
+        {index === 4 && <FileText className="h-6 w-6 text-green-600" />}
+        {index === 5 && <ClipboardCheck className="h-6 w-6 text-green-600" />}
+        {index === 6 && <Users className="h-6 w-6 text-green-600" />}
+      </div>
+      <span className="text-gray-700 font-medium">{item}</span>
+    </motion.div>
+  );
 
   return (
     <div className="min-h-screen bg-white">
@@ -212,28 +273,9 @@ const EngineeringServices = () => {
               {t('engineeringServices.experience.title')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {t('engineeringServices.experience.items').map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, backgroundColor: '#F0FDF4' }}
-                  className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-                >
-                  <div className="p-3 bg-green-100 rounded-lg">
-                    {index === 0 && <Award className="h-6 w-6 text-green-600" />}
-                    {index === 1 && <Lightbulb className="h-6 w-6 text-green-600" />}
-                    {index === 2 && <BadgeCheck className="h-6 w-6 text-green-600" />}
-                    {index === 3 && <Building className="h-6 w-6 text-green-600" />}
-                    {index === 4 && <FileText className="h-6 w-6 text-green-600" />}
-                    {index === 5 && <ClipboardCheck className="h-6 w-6 text-green-600" />}
-                    {index === 6 && <Users className="h-6 w-6 text-green-600" />}
-                  </div>
-                  <span className="text-gray-700 font-medium">{item}</span>
-                </motion.div>
-              ))}
+              {t('engineeringServices.experience.items').map((item: string, index: number) => {
+                return renderExperienceItem(item, index);
+              })}
             </div>
           </motion.div>
         </div>

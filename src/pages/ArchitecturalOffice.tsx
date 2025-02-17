@@ -284,16 +284,24 @@ Maroneia, Rodopi, Μαρώνεια, Προφήτης Ηλίας Ροδόπης
   };
 
   useEffect(() => {
+    // SEO Optimization
     document.title = language === 'el' 
-      ? 'Αρχιτεκτονικό Γραφείο | MAVRIDIS - Κατασκευές & Αρχιτεκτονικές Υπηρεσίες'
-      : 'Architectural Office | MAVRIDIS - Constructions & Architectural Services';
+      ? 'Αρχιτεκτονικό Γραφείο Κομοτηνής | MAVRIDIS - Κατασκευές & Αρχιτεκτονικές Υπηρεσίες'
+      : 'Architectural Office in Komotini | MAVRIDIS - Constructions & Architectural Services';
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', language === 'el'
-        ? 'Εξειδικευμένες αρχιτεκτονικές υπηρεσίες από το γραφείο MAVRIDIS στην Κομοτηνή. Σχεδιασμός κατοικιών, επαγγελματικών χώρων, ανακαινίσεις και αρχιτεκτονικές μελέτες.'
-        : 'Specialized architectural services by MAVRIDIS office in Komotini. House design, commercial spaces, renovations and architectural studies.'
+        ? 'Το αρχιτεκτονικό γραφείο MAVRIDIS στην Κομοτηνή προσφέρει ολοκληρωμένες υπηρεσίες σχεδιασμού και κατασκευής. Εξειδίκευση σε κατοικίες, επαγγελματικούς χώρους και ανακαινίσεις. ☎ 2531034781'
+        : 'MAVRIDIS architectural office in Komotini offers comprehensive design and construction services. Specializing in residential, commercial spaces and renovations. ☎ +30 2531034781'
       );
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = language === 'el'
+        ? 'Το αρχιτεκτονικό γραφείο MAVRIDIS στην Κομοτηνή προσφέρει ολοκληρωμένες υπηρεσίες σχεδιασμού και κατασκευής. Εξειδίκευση σε κατοικίες, επαγγελματικούς χώρους και ανακαινίσεις. ☎ 2531034781'
+        : 'MAVRIDIS architectural office in Komotini offers comprehensive design and construction services. Specializing in residential, commercial spaces and renovations. ☎ +30 2531034781';
+      document.head.appendChild(meta);
     }
   }, [language]);
 

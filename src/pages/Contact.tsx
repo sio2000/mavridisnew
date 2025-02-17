@@ -53,16 +53,24 @@ ${formData.message}`
   };
 
   useEffect(() => {
+    // SEO Optimization
     document.title = language === 'el' 
-      ? 'Επικοινωνία | MAVRIDIS - Κατασκευές & Αρχιτεκτονικές Υπηρεσίες'
-      : 'Contact | MAVRIDIS - Constructions & Architectural Services';
+      ? 'Επικοινωνία | MAVRIDIS - Τεχνικό Γραφείο Κομοτηνής | ☎ 2531034781'
+      : 'Contact | MAVRIDIS - Technical Office in Komotini | ☎ +30 2531034781';
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', language === 'el'
-        ? 'Επικοινωνήστε με το γραφείο MAVRIDIS στην Κομοτηνή. Κατασκευές, αρχιτεκτονικές μελέτες, ανακαινίσεις και τεχνικές υπηρεσίες. Τηλέφωνο: 2531034781'
-        : 'Contact MAVRIDIS office in Komotini, Greece. Construction, architectural studies, renovations and technical services. Phone: +30 2531034781'
+        ? 'Επικοινωνήστε με το τεχνικό γραφείο MAVRIDIS στην Κομοτηνή. Διεύθυνση: Θάσου 1, Κομοτηνή 69100. Τηλέφωνα: 2531034781, 6977717410. Email: ymavridis@gmail.com. Κατασκευές, μελέτες, επιβλέψεις.'
+        : 'Contact MAVRIDIS technical office in Komotini. Address: 1 Thasou St, Komotini 69100, Greece. Phones: +30 2531034781, +30 6977717410. Email: ymavridis@gmail.com. Construction, studies, supervision.'
       );
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = language === 'el'
+        ? 'Επικοινωνήστε με το τεχνικό γραφείο MAVRIDIS στην Κομοτηνή. Διεύθυνση: Θάσου 1, Κομοτηνή 69100. Τηλέφωνα: 2531034781, 6977717410. Email: ymavridis@gmail.com. Κατασκευές, μελέτες, επιβλέψεις.'
+        : 'Contact MAVRIDIS technical office in Komotini. Address: 1 Thasou St, Komotini 69100, Greece. Phones: +30 2531034781, +30 6977717410. Email: ymavridis@gmail.com. Construction, studies, supervision.';
+      document.head.appendChild(meta);
     }
   }, [language]);
 
@@ -121,6 +129,12 @@ ${formData.message}`
       color: 'bg-black hover:bg-gray-900'
     }
   ];
+
+  // Διόρθωση του linter error με το platform.icon
+  const SocialIcon = ({ platform, isHovered }: { platform: { icon: LucideIcon, url: string, color: string }, isHovered: boolean }) => {
+    const Icon = platform.icon;
+    return isHovered ? <Icon className="h-6 w-6" /> : <Icon className="h-6 w-6" />;
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -256,15 +270,9 @@ ${formData.message}`
                     href={platform.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
                     className={`p-3 text-white rounded-full transition-colors ${platform.color}`}
                   >
-                    {typeof platform.icon === 'function' ? (
-                      <platform.icon className="h-6 w-6" />
-                    ) : (
-                      <platform.icon className="h-6 w-6" />
-                    )}
+                    <SocialIcon platform={platform} isHovered={false} />
                   </motion.a>
                 ))}
               </div>
